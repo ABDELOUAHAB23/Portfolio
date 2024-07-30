@@ -34,6 +34,14 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+        emailjs.init("wZFjb2NKrgnHGHVw7"); // Replace with your actual public API key
+    })();
+</script>
+
 </head>
 
 <body class="index-page">
@@ -692,7 +700,9 @@
           </div>
 
           <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            
+              <form id="contact-form" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -757,6 +767,24 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
+   <!-- script for the message to send  -->
+   <script type="text/javascript">
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        var serviceID = 'service_5g0gumy'; // Replace with your actual service ID
+        var templateID = 'abdoTHEking2001'; // Replace with your actual template ID
+
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(function() {
+                alert('Your message has been sent successfully!');
+            }, function(error) {
+                alert('Failed to send the message. Please try again.');
+            });
+    });
+</script>
+
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
